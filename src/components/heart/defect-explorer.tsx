@@ -5,12 +5,19 @@ import { MapPin } from "lucide-react";
 import { defectTypes } from "@/content/congenital";
 import { cx } from "@/components/ui";
 
-/** Simplified block schematic (not to scale). The heart's right side is on the viewer's left. */
-function DefectDiagram({ id }: { id: string }) {
+/**
+ * Simplified block schematic (not to scale). The heart's right side is on the viewer's left.
+ * Pass id="typical" to draw a heart with no defect.
+ */
+export function DefectDiagram({ id }: { id: string }) {
   const show = (...ids: string[]) => ids.includes(id);
   const ring = "fill-none stroke-cyan [stroke-width:4]";
+  const label =
+    id === "typical"
+      ? "Simplified schematic of a typical heart"
+      : `Simplified heart schematic highlighting: ${defectTypes.find((d) => d.id === id)?.where}`;
   return (
-    <svg viewBox="0 0 320 300" className="w-full" role="img" aria-label={`Simplified heart schematic highlighting: ${defectTypes.find((d) => d.id === id)?.where}`}>
+    <svg viewBox="0 0 320 300" className="w-full" role="img" aria-label={label}>
       {/* chambers */}
       <rect x="40" y="70" width="110" height="80" rx="18" fill="var(--oxy-poor)" fillOpacity="0.25" stroke="var(--oxy-poor)" strokeWidth="3" />
       <rect x="150" y="70" width="110" height="80" rx="18" fill="var(--oxy-rich)" fillOpacity="0.22" stroke="var(--oxy-rich)" strokeWidth="3" />

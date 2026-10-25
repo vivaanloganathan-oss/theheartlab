@@ -13,8 +13,17 @@ import {
   SourceList,
 } from "@/components/ui";
 import { DefectExplorer } from "@/components/heart/defect-explorer";
+import { HeartComparison } from "@/components/heart/heart-comparison";
+import { ComparisonTable } from "@/components/heart/comparison-table";
 import { ChecklistCard } from "@/components/resources/checklist-card";
-import { athleteChecklists, coachTips, congenitalMeta, quickFacts, sportsPoints } from "@/content/congenital";
+import {
+  athleteChecklists,
+  coachTips,
+  congenitalMeta,
+  overallComparison,
+  quickFacts,
+  sportsPoints,
+} from "@/content/congenital";
 import { getReference } from "@/content/references";
 import { warningSigns } from "@/content/warning-signs";
 
@@ -88,8 +97,33 @@ export default function CongenitalPage() {
         </Container>
       </Section>
 
+      {/* COMPARISON */}
+      <Section id="compare" aria-labelledby="compare-heading" className="scroll-mt-28">
+        <Container>
+          <SectionHeading
+            id="compare-heading"
+            eyebrow="Side by side"
+            title="Typical heart vs. congenital heart conditions"
+            intro="Pick a condition to compare it with a typical heart: what's different in the structure, in how blood flows, and in how hard the heart works."
+          />
+          <div className="mt-10">
+            <HeartComparison />
+          </div>
+
+          <h3 className="mt-16 font-display text-3xl font-extrabold uppercase">The big picture</h3>
+          <div className="mt-6">
+            <ComparisonTable
+              conditionLabel="Congenital heart condition"
+              rows={overallComparison.rows}
+              caption="Typical heart compared with a heart with a congenital condition"
+            />
+          </div>
+          <SourceList ids={overallComparison.sources} className="mt-4" />
+        </Container>
+      </Section>
+
       {/* SPORTS */}
-      <Section id="sports" aria-labelledby="sports-heading" className="scroll-mt-28">
+      <Section id="sports" tone="elevated" aria-labelledby="sports-heading" className="scroll-mt-28">
         <Container>
           <SectionHeading
             id="sports-heading"
