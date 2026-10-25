@@ -8,6 +8,5 @@ export const studyLinks = {
   warningSigns: { href: "/warning-signs", label: "Know the warning signs" },
   arrestVsAttack: { href: "/warning-signs#arrest-vs-attack", label: "Cardiac arrest vs. heart attack" },
   emergency: { href: "/warning-signs#emergency", label: "Emergency response awareness" },
-  congenital: { href: "/congenital-heart-conditions", label: "Congenital heart conditions in athletes" },
   eap: { href: "/resources#coaches", label: "Coaches: emergency action planning" },
 } as const;

@@ -10,12 +10,6 @@ import { Button, ButtonLink, Card } from "@/components/ui";
 
 const quizList = [
   ...quizSets.map((q) => ({ id: q.id, title: q.title, href: `/quiz#${q.id}`, description: q.description })),
-  {
-    id: "congenital",
-    title: "Congenital Hearts Check",
-    href: "/congenital-heart-conditions#check",
-    description: "Five questions on congenital heart conditions in athletes.",
-  },
 ];
 
 const labs = [

@@ -14,7 +14,6 @@ import {
 } from "@/components/ui";
 import { DefectExplorer } from "@/components/heart/defect-explorer";
 import { ChecklistCard } from "@/components/resources/checklist-card";
-import { CongenitalQuiz } from "@/components/learn/congenital-quiz";
 import { athleteChecklists, coachTips, congenitalMeta, quickFacts, sportsPoints } from "@/content/congenital";
 import { getReference } from "@/content/references";
 import { warningSigns } from "@/content/warning-signs";
@@ -182,14 +181,9 @@ export default function CongenitalPage() {
         </Container>
       </Section>
 
-      {/* QUIZ */}
-      <Section tone="elevated" id="check" aria-labelledby="check-heading" className="scroll-mt-28">
-        <Container className="max-w-4xl">
-          <SectionHeading id="check-heading" eyebrow="Check your knowledge" title="Five quick questions" />
-          <div className="mt-8">
-            <CongenitalQuiz />
-          </div>
-          <div className="mt-12 flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-end sm:justify-between">
+      <Section tone="elevated" aria-label="Sources and review status" className="py-10 sm:py-12">
+        <Container>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <SourceList ids={congenitalMeta.sources} />
             <ReviewBadge review={congenitalMeta.review} />
           </div>

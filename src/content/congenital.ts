@@ -1,6 +1,5 @@
-import { studyLinks } from "./links";
 import type { Checklist } from "./resources";
-import { PENDING_REVIEW, type ContentMeta, type Question } from "./types";
+import { PENDING_REVIEW, type ContentMeta } from "./types";
 
 export const congenitalMeta: ContentMeta = {
   category: "conditions",
@@ -147,66 +146,4 @@ export const coachTips = [
   "Treat the athlete like any teammate. Most athletes with congenital heart conditions can be active and included.",
   "Never ask an athlete to play through chest pain, fainting, unusual shortness of breath, or a racing heart with dizziness.",
   "Make sure the emergency action plan is practiced and the AED is reachable at every practice and game.",
-];
-
-export const congenitalQuiz: Question[] = [
-  {
-    id: "chd1",
-    kind: "true-false",
-    prompt: "True or false: Congenital heart defects are always found at birth.",
-    options: ["True", "False"],
-    answerIndex: 1,
-    explanation: "False. Some are found before birth or at birth, but others aren't detected until childhood or adulthood.",
-    related: studyLinks.congenital,
-  },
-  {
-    id: "chd2",
-    kind: "multiple-choice",
-    prompt: "Who should decide which sports are right for an athlete with a congenital heart condition?",
-    options: ["The athlete alone", "The coach", "The athlete's cardiologist, together with the athlete and family", "A fitness app"],
-    answerIndex: 2,
-    explanation: "Activity decisions are individual and should be made with the athlete's cardiologist, using shared decision-making with the athlete and family.",
-    related: studyLinks.congenital,
-  },
-  {
-    id: "chd3",
-    kind: "true-false",
-    prompt: "True or false: Once a heart defect is repaired with surgery, no more check-ups are needed.",
-    options: ["True", "False"],
-    answerIndex: 1,
-    explanation: "False. Many people are not cured even after repair, so regular cardiology visits are important for life.",
-    related: studyLinks.congenital,
-  },
-  {
-    id: "chd4",
-    kind: "scenario",
-    scenario:
-      "A teammate who had heart surgery as a baby says they feel dizzy and their heart is racing during sprints today.",
-    prompt: "What's the best thing to do?",
-    options: [
-      "Tell them to push through — they've been cleared before",
-      "Have them stop, tell the coach or athletic trainer right away, and make sure they get checked",
-      "Keep it a secret so they don't get benched",
-      "Wait until after practice",
-    ],
-    answerIndex: 1,
-    explanation:
-      "Dizziness with a racing heart during exercise is a warning sign for anyone. Stop, tell an adult right away, and get evaluated. If they collapse, call 911, start CPR, and use an AED.",
-    related: studyLinks.warningSigns,
-  },
-  {
-    id: "chd5",
-    kind: "multiple-choice",
-    prompt: "Which statement is most accurate?",
-    options: [
-      "People with congenital heart defects should never exercise",
-      "Most people with congenital heart defects can be physically active, with guidance from their care team",
-      "All congenital heart defects are severe",
-      "Only adults can have congenital heart defects",
-    ],
-    answerIndex: 1,
-    explanation:
-      "Most people with congenital heart defects can be physically active. The right type and amount of activity depends on the person and is guided by their care team.",
-    related: studyLinks.congenital,
-  },
 ];

@@ -45,7 +45,7 @@ Set `NEXT_PUBLIC_SITE_URL` to your production URL (for example `https://theheart
 | `/explore-your-heart` | Interactive labeled heart diagram (8 structures), animated circulation loop, expandable explanations |
 | `/athlete-health` | Topics A–J, each with simple and scientific explanations, an example, an interactive widget, a takeaway, and a knowledge check |
 | `/warning-signs` | Six warning signs, Stop/Tell/Get checked, cardiac arrest vs. heart attack, conditions and screening, emergency response |
-| `/congenital-heart-conditions` | Congenital heart conditions in athletes: basics, interactive defect explorer (6 types), sports & activity guidance, warning signs, athlete/family checklists, coach tips, 5-question check |
+| `/congenital-heart-conditions` | Congenital heart conditions in athletes: basics, interactive defect explorer (6 types), sports & activity guidance, warning signs, athlete/family checklists, coach tips |
 | `/heart-lab` | Heartbeat Simulator, Blood Flow Explorer, Exercise & Your Heart, Recovery Explorer, Myth vs. Fact |
 | `/quiz` | Knowledge Challenge and the "What Would You Do?" scenario challenge |
 | `/dashboard` | Local progress: knowledge checks passed, labs explored, quiz results, recommended next steps, reset |
