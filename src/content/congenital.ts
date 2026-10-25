@@ -9,6 +9,7 @@ export const congenitalMeta: ContentMeta = {
     "cdc-chd-living",
     "nhlbi-congenital",
     "nhlbi-chd-types",
+    "nhlbi-chd-diagnosis",
     "nhlbi-chd-living",
     "aha-chd-activity",
     "acc-achd-guideline",
@@ -87,6 +88,8 @@ export const defectTypes: DefectType[] = [
 
 export interface DefectComparison {
   defectId: string;
+  /** What to watch for in the animated blood-flow diagram. */
+  flowNote: string;
   rows: { aspect: string; typical: string; condition: string }[];
 }
 
@@ -97,6 +100,7 @@ export interface DefectComparison {
 export const defectComparisons: DefectComparison[] = [
   {
     defectId: "asd",
+    flowNote: "Watch the red dots with cyan outlines: oxygen-rich blood crosses from the left atrium into the right atrium and goes back to the lungs.",
     rows: [
       { aspect: "Structure", typical: "A solid wall (septum) separates the right and left atria.", condition: "There is a hole in the wall between the atria." },
       { aspect: "Blood flow", typical: "Oxygen-poor blood (right side) and oxygen-rich blood (left side) stay separate.", condition: "Some oxygen-rich blood leaks from the left atrium into the right atrium and goes back to the lungs." },
@@ -105,6 +109,7 @@ export const defectComparisons: DefectComparison[] = [
   },
   {
     defectId: "vsd",
+    flowNote: "Watch the red dots with cyan outlines: oxygen-rich blood crosses from the left ventricle into the right ventricle and is pumped back to the lungs.",
     rows: [
       { aspect: "Structure", typical: "A solid wall separates the right and left ventricles.", condition: "There is a hole in the wall between the ventricles." },
       { aspect: "Blood flow", typical: "Each ventricle pumps its own blood out — the right to the lungs, the left to the body.", condition: "When the ventricles squeeze, some oxygen-rich blood passes through the hole and is pumped back to the lungs." },
@@ -113,6 +118,7 @@ export const defectComparisons: DefectComparison[] = [
   },
   {
     defectId: "pda",
+    flowNote: "Watch the red dots with cyan outlines: blood flows from the aorta into the pulmonary artery and back to the lungs.",
     rows: [
       { aspect: "Structure", typical: "The ductus arteriosus — a vessel that links the aorta and pulmonary artery before birth — closes shortly after birth.", condition: "The connection stays open after birth." },
       { aspect: "Blood flow", typical: "Blood leaving the heart for the body and blood going to the lungs stay separate.", condition: "Some blood flows from the aorta into the pulmonary artery, sending extra blood to the lungs." },
@@ -121,6 +127,7 @@ export const defectComparisons: DefectComparison[] = [
   },
   {
     defectId: "pulmonary-stenosis",
+    flowNote: "Watch the blue dots slow down and bunch up as they squeeze through the narrowed pulmonary valve.",
     rows: [
       { aspect: "Structure", typical: "The pulmonary valve opens fully with each beat.", condition: "The pulmonary valve is narrowed or stiff." },
       { aspect: "Blood flow", typical: "Blood moves easily from the right ventricle to the lungs.", condition: "Less room for blood to pass from the right ventricle into the pulmonary artery." },
@@ -129,6 +136,7 @@ export const defectComparisons: DefectComparison[] = [
   },
   {
     defectId: "coarctation",
+    flowNote: "Watch the red dots slow down as they squeeze through the narrowed part of the aorta.",
     rows: [
       { aspect: "Structure", typical: "The aorta is wide open along its length.", condition: "Part of the aorta is narrowed." },
       { aspect: "Blood flow", typical: "Oxygen-rich blood flows freely from the heart to the whole body.", condition: "Blood has to squeeze through the narrowed section to reach the rest of the body." },
@@ -137,6 +145,7 @@ export const defectComparisons: DefectComparison[] = [
   },
   {
     defectId: "tof",
+    flowNote: "Watch the blue dots slow at the narrowed pulmonary valve — and the blue dots with cyan outlines that skip the lungs and go out the aorta to the body.",
     rows: [
       { aspect: "Structure", typical: "Separate ventricles, an open pulmonary valve, the aorta rising from the left ventricle, and a normal right ventricle wall.", condition: "Four problems together: a narrowed pulmonary valve, a large VSD, an aorta sitting over both ventricles, and a thickened right ventricle." },
       { aspect: "Blood flow", typical: "All oxygen-poor blood goes to the lungs before reaching the body.", condition: "Some oxygen-poor blood can bypass the lungs and go out to the body, so the blood carries less oxygen." },

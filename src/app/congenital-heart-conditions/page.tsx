@@ -15,6 +15,7 @@ import {
 import { DefectExplorer } from "@/components/heart/defect-explorer";
 import { HeartComparison } from "@/components/heart/heart-comparison";
 import { ComparisonTable } from "@/components/heart/comparison-table";
+import { HeartTests } from "@/components/heart/heart-tests";
 import { ChecklistCard } from "@/components/resources/checklist-card";
 import {
   athleteChecklists,
@@ -122,8 +123,23 @@ export default function CongenitalPage() {
         </Container>
       </Section>
 
+      {/* TESTS */}
+      <Section id="tests" tone="elevated" aria-labelledby="tests-heading" className="scroll-mt-28">
+        <Container>
+          <SectionHeading
+            id="tests-heading"
+            eyebrow="How doctors look at the heart"
+            title="Which test shows what?"
+            intro="Different tests answer different questions. An EKG checks the heart's rhythm; an echocardiogram shows its structure — which is where congenital heart conditions are."
+          />
+          <div className="mt-10">
+            <HeartTests />
+          </div>
+        </Container>
+      </Section>
+
       {/* SPORTS */}
-      <Section id="sports" tone="elevated" aria-labelledby="sports-heading" className="scroll-mt-28">
+      <Section id="sports" aria-labelledby="sports-heading" className="scroll-mt-28">
         <Container>
           <SectionHeading
             id="sports-heading"

@@ -100,6 +100,13 @@ export const references: Reference[] = [
     verifiedOn: VERIFIED,
   },
   {
+    id: "nhlbi-chd-diagnosis",
+    organization: "National Heart, Lung, and Blood Institute (NIH)",
+    title: "Congenital Heart Defects — Diagnosis",
+    url: "https://www.nhlbi.nih.gov/health/congenital-heart-defects/diagnosis",
+    verifiedOn: VERIFIED,
+  },
+  {
     id: "nhlbi-chd-living",
     organization: "National Heart, Lung, and Blood Institute (NIH)",
     title: "Congenital Heart Defects — Living With",
