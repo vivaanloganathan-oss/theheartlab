@@ -50,8 +50,8 @@ const labs = [
 export default function Home() {
   return (
     <>
-      {/* HERO */}
-      <div className="relative overflow-hidden bg-navy text-white">
+      {/* HERO — the id marks the home page for RouteRecovery */}
+      <div id="home-page" className="relative overflow-hidden bg-navy text-white">
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <CourtLines className="absolute inset-0 h-full w-full text-white/[0.05]" />
           <div className="absolute -left-40 top-20 size-[32rem] rounded-full bg-heart/20 blur-3xl" />

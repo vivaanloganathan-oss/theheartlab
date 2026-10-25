@@ -23,6 +23,7 @@ Other scripts:
 npm run build      # production build (all pages are statically prerendered)
 npm run start      # serve the production build
 npm run lint       # ESLint
+npm run build:app  # static export for the native apps (see "Native apps")
 npx tsc --noEmit   # type-check
 ```
 
@@ -36,6 +37,31 @@ The site is fully static, with no server-side data. Any Next.js host works:
 - **Self-hosted:** `npm run build && npm run start` behind a reverse proxy, or use a Node/Docker host.
 
 Set `NEXT_PUBLIC_SITE_URL` to your production URL (for example `https://theheartlab.org`) so the sitemap, robots.txt, and Open Graph metadata use absolute URLs.
+
+## Native apps (iOS and Android with Capacitor)
+
+The same site is bundled into native iPhone and Android apps with [Capacitor](https://capacitorjs.com). The app contains the whole site, so it works offline.
+
+```bash
+npm run build:app   # static export to out/ + copy into ios/ and android/
+npm run ios         # build, then open the project in Xcode
+npm run android     # build, then open the project in Android Studio
+```
+
+**One-time setup:**
+
+- **iOS:** install **Xcode** from the Mac App Store. Open it once to accept the license and install the iOS simulator, then run `sudo xcode-select -s /Applications/Xcode.app`. In Xcode, select a simulator or your iPhone and press ▶. Running on your own iPhone needs a free Apple ID (Signing & Capabilities → Team). Publishing to the App Store needs the Apple Developer Program ($99/year).
+- **Android:** install **Android Studio** (`brew install --cask android-studio`) and complete its setup wizard, which installs the SDK and an emulator. Open the project with `npm run android`, then press ▶. Publishing to Google Play needs a developer account ($25 one-time).
+
+**How it works:**
+
+- `BUILD_TARGET=app` switches Next.js to `output: "export"` with trailing slashes. The website build (`npm run build`) is unchanged.
+- `capacitor.config.ts` sets the app ID (`com.theheartlab.app`; change it before publishing if you own a domain), the name, the splash screen, and edge-to-edge handling. Header and footer padding use `env(safe-area-inset-*)`, so content clears the notch and the home indicator.
+- Icons and splash screens are generated from `assets/` with `npx capacitor-assets generate` (already done; re-run after changing the images).
+- In the app, checklist **Print/Download** buttons become a native **Share** sheet, which can still print. External source links open in the phone's browser.
+- Capacitor serves the home page for any URL without a file extension. `RouteRecovery` (in the root layout) detects this after an unexpected reload on a subpage and navigates to the right page.
+
+**App store notes:** Apple may reject apps that mostly repackage a website (guideline 4.2), and it reviews health content closely (guideline 1.4.1). Finish the clinical review below before submitting. Apple also requires a support URL and privacy details in App Store Connect.
 
 ## Routes
 
@@ -58,6 +84,9 @@ Set `NEXT_PUBLIC_SITE_URL` to your production URL (for example `https://theheart
 ```
 src/
   app/                    # routes (App Router), sitemap.ts, robots.ts, icon.svg
+assets/                   # source images for native app icons and splash screens
+ios/ android/             # Capacitor native projects (generated; web files copied in by `cap sync`)
+capacitor.config.ts
   components/
     ui.tsx                # design system: Container, Section, Button, Card, Callout, Pill, SourceList, ReviewBadge…
     layout/               # header (desktop + mobile nav), footer, search dialog, theme toggle, logo

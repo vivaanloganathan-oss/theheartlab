@@ -4,6 +4,8 @@ import "./globals.css";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { themeScript } from "@/components/layout/theme-toggle";
+import { NativeInit } from "@/components/layout/native-init";
+import { RouteRecovery } from "@/components/layout/route-recovery";
 import { site } from "@/lib/site";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
@@ -30,6 +32,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#071426",
+  // Edge-to-edge on notched phones and in the native app; safe-area padding is applied in the header and footer.
+  viewportFit: "cover",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -50,6 +54,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <SiteFooter />
+        <NativeInit />
+        <RouteRecovery />
       </body>
     </html>
   );

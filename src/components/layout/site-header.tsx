@@ -41,7 +41,7 @@ export function SiteHeader() {
   const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
   return (
-    <header className="sticky top-0 z-40">
+    <header className="sticky top-0 z-40 bg-heart pt-[env(safe-area-inset-top)]">
       <div className="bg-heart text-navy">
         <p className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-2 px-4 py-1.5 text-center text-xs font-bold sm:text-sm">
           <Phone aria-hidden className="size-3.5" />

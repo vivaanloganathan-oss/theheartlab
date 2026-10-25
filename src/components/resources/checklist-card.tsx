@@ -1,10 +1,11 @@
 "use client";
 
 import { useId, useRef, useState } from "react";
-import { Download, Printer } from "lucide-react";
+import { Download, Printer, Share2 } from "lucide-react";
 import type { Checklist, GuideSection } from "@/content/resources";
 import { site } from "@/lib/site";
 import { Button } from "@/components/ui";
+import { shareText, useIsNativeApp } from "@/lib/native";
 
 function downloadText(filename: string, text: string) {
   const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
@@ -29,6 +30,7 @@ export function ChecklistCard({ checklist }: { checklist: Checklist }) {
   const ref = useRef<HTMLDivElement>(null);
   const [checked, setChecked] = useState<Record<number, boolean>>({});
   const id = useId();
+  const native = useIsNativeApp();
 
   const asText = () =>
     `${checklist.title.toUpperCase()}\n\n${checklist.intro}\n\n${checklist.items.map((i) => `[ ] ${i}`).join("\n")}\n${footer}`;
@@ -58,28 +60,35 @@ export function ChecklistCard({ checklist }: { checklist: Checklist }) {
       </p>
       <p className="mt-4 hidden text-xs print:block">{site.disclaimer}</p>
       <div className="no-print mt-5 flex flex-wrap gap-2">
-        <Button variant="secondary" onClick={() => printElement(ref.current)}>
-          <Printer aria-hidden className="size-4" /> Print
-        </Button>
-        <Button variant="secondary" onClick={() => downloadText(`heart-lab-${checklist.id}-checklist.txt`, asText())}>
-          <Download aria-hidden className="size-4" /> Download
-        </Button>
+        {native ? (
+          <Button variant="secondary" onClick={() => shareText(checklist.title, asText())}>
+            <Share2 aria-hidden className="size-4" /> Share or print
+          </Button>
+        ) : (
+          <>
+            <Button variant="secondary" onClick={() => printElement(ref.current)}>
+              <Printer aria-hidden className="size-4" /> Print
+            </Button>
+            <Button variant="secondary" onClick={() => downloadText(`heart-lab-${checklist.id}-checklist.txt`, asText())}>
+              <Download aria-hidden className="size-4" /> Download
+            </Button>
+          </>
+        )}
       </div>
     </div>
   );
 }
 
 export function GuideDownload({ title, sections, filename }: { title: string; sections: GuideSection[]; filename: string }) {
-  return (
-    <Button
-      variant="cyan"
-      onClick={() =>
-        downloadText(
-          filename,
-          `${title.toUpperCase()}\n\n${sections.map((s) => `${s.title}\n${s.body.join("\n\n")}`).join("\n\n")}\n${footer}`,
-        )
-      }
-    >
+  const native = useIsNativeApp();
+  const text = () =>
+    `${title.toUpperCase()}\n\n${sections.map((s) => `${s.title}\n${s.body.join("\n\n")}`).join("\n\n")}\n${footer}`;
+  return native ? (
+    <Button variant="cyan" onClick={() => shareText(title, text())}>
+      <Share2 aria-hidden className="size-4" /> Share full guide
+    </Button>
+  ) : (
+    <Button variant="cyan" onClick={() => downloadText(filename, text())}>
       <Download aria-hidden className="size-4" /> Download full guide (.txt)
     </Button>
   );

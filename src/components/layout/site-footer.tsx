@@ -4,7 +4,7 @@ import { Logo } from "./logo";
 
 export function SiteFooter() {
   return (
-    <footer className="mt-auto bg-navy text-white">
+    <footer className="mt-auto bg-navy pb-[env(safe-area-inset-bottom)] text-white">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr]">
           <div>
