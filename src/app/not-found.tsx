@@ -8,8 +8,8 @@ export default function NotFound() {
       <p className="mt-4 text-lg text-fg-muted">We couldn&apos;t find that page.</p>
       <div className="mt-8 flex justify-center gap-3">
         <ButtonLink href="/">Back to home</ButtonLink>
-        <ButtonLink href="/academy" variant="secondary">
-          Learning Academy
+        <ButtonLink href="/heart-lab" variant="secondary">
+          Heart Lab
         </ButtonLink>
       </div>
     </Container>

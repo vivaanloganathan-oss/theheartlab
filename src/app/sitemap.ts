@@ -1,14 +1,13 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/lib/site";
-import { modules } from "@/content/academy";
 
 const routes = [
   "",
   "/explore-your-heart",
   "/athlete-health",
   "/warning-signs",
+  "/congenital-heart-conditions",
   "/heart-lab",
-  "/academy",
   "/quiz",
   "/dashboard",
   "/resources",
@@ -20,7 +19,7 @@ const routes = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [...routes, ...modules.map((m) => `/academy/${m.id}`)].map((path) => ({
+  return routes.map((path) => ({
     url: `${site.url}${path}`,
     lastModified: site.contentUpdated,
   }));

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useId, useRef, useState } from "react";
 import { ArrowRight, CheckCircle2, RotateCcw, Trophy, XCircle } from "lucide-react";
 import type { Question } from "@/content/types";
-import { moduleById } from "@/content/academy";
 import { Button, Pill, cx } from "@/components/ui";
 
 const kindLabel = {
@@ -18,12 +17,10 @@ interface Props {
   /** Called once per completed attempt. */
   onFinish?: (score: number, total: number) => void;
   passMark?: number;
-  /** Module to suggest when a missed question has no relatedModule. */
-  fallbackModule?: string;
   finishLabel?: string;
 }
 
-export function QuizEngine({ questions, onFinish, passMark, fallbackModule, finishLabel = "See results" }: Props) {
+export function QuizEngine({ questions, onFinish, passMark, finishLabel = "See results" }: Props) {
   const [index, setIndex] = useState(0);
   const [choice, setChoice] = useState<number | null>(null);
   const [answered, setAnswered] = useState(false);
@@ -66,9 +63,9 @@ export function QuizEngine({ questions, onFinish, passMark, fallbackModule, fini
   if (done) {
     const passed = passMark === undefined || score >= passMark;
     const missed = questions.filter((_, i) => !results[i]);
-    const suggestions = Array.from(
-      new Set(missed.map((m) => m.relatedModule ?? fallbackModule).filter((x): x is string => !!x && !!moduleById[x])),
-    );
+    const suggestions = [
+      ...new Map(missed.flatMap((m) => (m.related ? [[m.related.href, m.related] as const] : []))).values(),
+    ];
     return (
       <div className="rounded-3xl border border-line bg-bg-elev p-6 sm:p-8">
         <h3 ref={headingRef} tabIndex={-1} className="flex items-center gap-3 font-display text-4xl font-extrabold uppercase outline-none">
@@ -98,12 +95,12 @@ export function QuizEngine({ questions, onFinish, passMark, fallbackModule, fini
         </ol>
         {suggestions.length > 0 && (
           <div className="mt-6 rounded-2xl bg-bg-sunken p-4">
-            <p className="font-bold">Suggested lessons</p>
+            <p className="font-bold">Suggested review</p>
             <ul className="mt-2 space-y-1">
-              {suggestions.map((id) => (
-                <li key={id}>
-                  <Link href={`/academy/${id}`} className="inline-flex items-center gap-1 text-cyan-ink underline underline-offset-2">
-                    {moduleById[id].title} <ArrowRight aria-hidden className="size-3.5" />
+              {suggestions.map((s) => (
+                <li key={s.href}>
+                  <Link href={s.href} className="inline-flex items-center gap-1 text-cyan-ink underline underline-offset-2">
+                    {s.label} <ArrowRight aria-hidden className="size-3.5" />
                   </Link>
                 </li>
               ))}

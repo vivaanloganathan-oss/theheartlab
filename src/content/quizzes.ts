@@ -1,3 +1,4 @@
+import { studyLinks } from "./links";
 import type { Question } from "./types";
 
 export interface QuizSet {
@@ -19,7 +20,7 @@ export const knowledgeChallenge: QuizSet = {
       options: ["Right atrium", "Right ventricle", "Left atrium", "Left ventricle"],
       answerIndex: 3,
       explanation: "The left ventricle pumps oxygen-rich blood into the aorta and out to the body.",
-      relatedModule: "heart-anatomy",
+      related: studyLinks.anatomy,
     },
     {
       id: "kc2",
@@ -28,7 +29,7 @@ export const knowledgeChallenge: QuizSet = {
       options: ["The aorta", "The lungs", "The left atrium", "The brain"],
       answerIndex: 1,
       explanation: "The right ventricle pumps blood through the pulmonary arteries to the lungs.",
-      relatedModule: "blood-circulation",
+      related: studyLinks.circulation,
     },
     {
       id: "kc3",
@@ -37,7 +38,7 @@ export const knowledgeChallenge: QuizSet = {
       options: ["True", "False"],
       answerIndex: 1,
       explanation: "False. Resting heart rate varies between healthy people because of fitness, genetics, and many other factors.",
-      relatedModule: "understanding-pulse",
+      related: studyLinks.pulse,
     },
     {
       id: "kc4",
@@ -46,7 +47,7 @@ export const knowledgeChallenge: QuizSet = {
       options: ["Heart rate × stroke volume", "Breaths per minute", "Blood pressure ÷ heart rate", "The size of the heart"],
       answerIndex: 0,
       explanation: "Cardiac output = heart rate × stroke volume.",
-      relatedModule: "exercise-physiology",
+      related: studyLinks.endurance,
     },
     {
       id: "kc5",
@@ -55,7 +56,7 @@ export const knowledgeChallenge: QuizSet = {
       options: ["Sore muscles the next day", "Breathing hard after sprints", "Chest pain during exercise", "Feeling hungry after practice"],
       answerIndex: 2,
       explanation: "Chest pain or discomfort during exercise is a warning sign. Stop, tell an adult, and get checked.",
-      relatedModule: "warning-signs",
+      related: studyLinks.warningSigns,
     },
     {
       id: "kc6",
@@ -64,7 +65,7 @@ export const knowledgeChallenge: QuizSet = {
       options: ["True", "False"],
       answerIndex: 1,
       explanation: "False. Cardiac arrest is an electrical problem where the heart stops pumping effectively; a heart attack is a blockage of blood flow.",
-      relatedModule: "emergency-awareness",
+      related: studyLinks.arrestVsAttack,
     },
     {
       id: "kc7",
@@ -73,7 +74,7 @@ export const knowledgeChallenge: QuizSet = {
       options: ["Only doctors", "Only paramedics", "Anyone — it gives voice instructions", "Only certified coaches"],
       answerIndex: 2,
       explanation: "AEDs are designed for use by the public and guide the user with voice prompts.",
-      relatedModule: "cpr-aed",
+      related: studyLinks.emergency,
     },
     {
       id: "kc8",
@@ -82,7 +83,7 @@ export const knowledgeChallenge: QuizSet = {
       options: ["5–6 hours", "6–7 hours", "8–10 hours", "11–13 hours"],
       answerIndex: 2,
       explanation: "8–10 hours per 24 hours.",
-      relatedModule: "recovery-hydration",
+      related: studyLinks.recovery,
     },
     {
       id: "kc9",
@@ -97,7 +98,7 @@ export const knowledgeChallenge: QuizSet = {
       ],
       answerIndex: 1,
       explanation: "A typical heart rate doesn't rule out heart conditions. Exercise-related chest pain needs a medical evaluation.",
-      relatedModule: "warning-signs",
+      related: studyLinks.warningSigns,
     },
     {
       id: "kc10",
@@ -111,7 +112,7 @@ export const knowledgeChallenge: QuizSet = {
       ],
       answerIndex: 0,
       explanation: "An EAP assigns roles — calling 911, CPR, getting the AED, guiding EMS — and should be rehearsed.",
-      relatedModule: "heart-aware-culture",
+      related: studyLinks.eap,
     },
   ],
 };
@@ -135,7 +136,7 @@ export const scenarioChallenge: QuizSet = {
       answerIndex: 1,
       explanation:
         "Treat this as possible cardiac arrest. Call 911 or point to a specific person to call, start Hands-Only CPR — push hard and fast in the center of the chest — and use the AED as soon as it arrives by following its voice prompts.",
-      relatedModule: "emergency-awareness",
+      related: studyLinks.arrestVsAttack,
     },
     {
       id: "wy2",
@@ -151,7 +152,7 @@ export const scenarioChallenge: QuizSet = {
       answerIndex: 1,
       explanation:
         "Anyone can use an AED. Turn it on and follow the prompts. It analyzes the rhythm and only advises a shock if needed. Resume CPR when the AED tells you to.",
-      relatedModule: "cpr-aed",
+      related: studyLinks.emergency,
     },
     {
       id: "wy3",
@@ -167,7 +168,7 @@ export const scenarioChallenge: QuizSet = {
       answerIndex: 1,
       explanation:
         "A racing or irregular heartbeat with dizziness is a warning sign. Stop, tell an adult, and get evaluated. If symptoms are severe or you faint, someone should call 911.",
-      relatedModule: "warning-signs",
+      related: studyLinks.warningSigns,
     },
     {
       id: "wy4",
@@ -183,7 +184,7 @@ export const scenarioChallenge: QuizSet = {
       answerIndex: 1,
       explanation:
         "Sudden, unexplained death in a relative under 50 is important family history. Your doctor can decide whether further evaluation is needed.",
-      relatedModule: "warning-signs",
+      related: studyLinks.warningSigns,
     },
     {
       id: "wy5",
@@ -199,7 +200,7 @@ export const scenarioChallenge: QuizSet = {
       answerIndex: 1,
       explanation:
         "Chest symptoms or unusual breathlessness after a viral illness should be checked by a healthcare professional before hard training, since infections can sometimes affect the heart.",
-      relatedModule: "warning-signs",
+      related: studyLinks.warningSigns,
     },
   ],
 };

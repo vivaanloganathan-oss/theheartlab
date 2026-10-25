@@ -4,7 +4,7 @@ import { Dashboard } from "@/components/learn/dashboard";
 
 export const metadata: Metadata = {
   title: "My Learning Dashboard",
-  description: "Your lessons, quiz results, badges, and certificates — stored privately in your browser.",
+  description: "Your knowledge checks, labs explored, and quiz results — stored privately in your browser.",
 };
 
 export default function DashboardPage() {

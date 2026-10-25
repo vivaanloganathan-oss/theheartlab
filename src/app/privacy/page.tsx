@@ -12,14 +12,14 @@ const sections = [
     title: "The short version",
     body: [
       "The Heart Lab does not require an account, does not show ads, and does not include third-party trackers or analytics by default.",
-      "Your learning progress (completed lessons, quiz scores, badges, and theme preference) is stored only in your own browser using local storage. It is never sent to us or anyone else.",
+      "Your learning progress (knowledge checks passed, labs explored, quiz scores, and theme preference) is stored only in your own browser using local storage. It is never sent to us or anyone else.",
     ],
   },
   {
     title: "What we don't collect",
     body: [
       "We do not ask for or collect names, email addresses, exact birth dates, school names, medical history, heart-rate readings, or any other personal health information.",
-      "Interactive tools — such as the pulse math widget or the certificate name field — work entirely in your browser. Values you type are not saved or transmitted.",
+      "Interactive tools — such as the pulse math widget or the sleep and cardiac output sliders — work entirely in your browser. Values you type are not saved or transmitted.",
     ],
   },
   {

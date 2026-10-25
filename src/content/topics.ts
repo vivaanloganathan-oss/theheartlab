@@ -1,3 +1,4 @@
+import { studyLinks } from "./links";
 import { PENDING_REVIEW, type ContentMeta, type Question } from "./types";
 
 export type TopicWidget =
@@ -311,7 +312,7 @@ export const topics: Topic[] = [
       ],
       answerIndex: 2,
       explanation: "Chest pain with exercise is a warning sign. Stop activity, tell a coach or parent, and get evaluated by a healthcare professional.",
-      relatedModule: "warning-signs",
+      related: studyLinks.warningSigns,
     },
   },
   {

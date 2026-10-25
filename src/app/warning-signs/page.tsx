@@ -166,6 +166,11 @@ export default function WarningSignsPage() {
                       <li key={d}>{d}</li>
                     ))}
                   </ul>
+                  {c.id === "congenital" && (
+                    <ButtonLink href="/congenital-heart-conditions" variant="secondary">
+                      Congenital heart conditions in athletes
+                    </ButtonLink>
+                  )}
                   <SourceList ids={c.sources} />
                 </div>
               </details>
@@ -207,8 +212,8 @@ export default function WarningSignsPage() {
           </div>
           <div className="mt-8 flex flex-wrap gap-3">
             <ButtonLink href="/quiz#what-would-you-do">Try “What Would You Do?”</ButtonLink>
-            <ButtonLink href="/academy/cpr-aed" variant="secondary">
-              CPR & AED fundamentals lesson
+            <ButtonLink href="/resources#coaches" variant="secondary">
+              Emergency action plan checklist
             </ButtonLink>
           </div>
         </Container>

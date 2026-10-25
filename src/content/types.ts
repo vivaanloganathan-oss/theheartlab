@@ -59,8 +59,8 @@ export interface Question {
   options: string[];
   answerIndex: number;
   explanation: string;
-  /** Academy module ID to suggest when this question is missed. */
-  relatedModule?: string;
+  /** Page to suggest when this question is missed. */
+  related?: { href: string; label: string };
 }
 
 export const PENDING_REVIEW = (lastUpdated: string): ReviewMeta => ({

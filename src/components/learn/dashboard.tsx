@@ -2,22 +2,29 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowRight, Award, BookOpen, FlaskConical, ListChecks, Lock, Trash2 } from "lucide-react";
-import { badges, levels, moduleById, modules } from "@/content/academy";
+import { ArrowRight, CheckCircle2, Circle, FlaskConical, ListChecks, Trash2, Trophy } from "lucide-react";
 import { quizSets } from "@/content/quizzes";
 import { topics } from "@/content/topics";
-import { isModuleComplete, useHydrated, useProgress } from "@/lib/progress";
-import { completedModuleIds, earnedBadges, recommendedModules } from "@/lib/badges";
-import { Button, ButtonLink, Card, Pill, cx } from "@/components/ui";
-import { CertificateButton } from "./certificate";
+import { useHydrated, useProgress } from "@/lib/progress";
+import { Button, ButtonLink, Card } from "@/components/ui";
 
-const labNames: Record<string, string> = {
-  heartbeat: "Heartbeat Simulator",
-  "blood-flow": "Blood Flow Explorer",
-  sports: "Exercise & Your Heart",
-  recovery: "Recovery Explorer",
-  myths: "Myth vs. Fact",
-};
+const quizList = [
+  ...quizSets.map((q) => ({ id: q.id, title: q.title, href: `/quiz#${q.id}`, description: q.description })),
+  {
+    id: "congenital",
+    title: "Congenital Hearts Check",
+    href: "/congenital-heart-conditions#check",
+    description: "Five questions on congenital heart conditions in athletes.",
+  },
+];
+
+const labs = [
+  { id: "heartbeat", name: "Heartbeat Simulator" },
+  { id: "blood-flow", name: "Blood Flow Explorer" },
+  { id: "sports", name: "Exercise & Your Heart" },
+  { id: "recovery", name: "Recovery Explorer" },
+  { id: "myths", name: "Myth vs. Fact" },
+];
 
 export function Dashboard() {
   const hydrated = useHydrated();
@@ -28,28 +35,31 @@ export function Dashboard() {
     return <div className="h-96 animate-pulse rounded-3xl bg-bg-sunken" aria-label="Loading your progress" />;
   }
 
-  const completed = completedModuleIds(progress);
-  const earned = earnedBadges(progress);
-  const recommended = recommendedModules(progress);
-  const pct = Math.round((completed.length / modules.length) * 100);
-  const checks = topics.filter((t) => progress.topicChecks[t.id]).length;
-  const labs = Object.keys(labNames).filter((k) => progress.labsVisited[k]);
+  const checksDone = topics.filter((t) => progress.topicChecks[t.id]);
+  const labsDone = labs.filter((l) => progress.labsVisited[l.id]);
+  const quizzesTaken = quizList.filter((q) => progress.quizzes[q.id]);
+  const total = topics.length + labs.length + quizList.length;
+  const pct = Math.round(((checksDone.length + labsDone.length + quizzesTaken.length) / total) * 100);
 
-  const completedAtFor = (badgeId: string) => {
-    const b = badges.find((x) => x.id === badgeId)!;
-    const dates = b.requires.map((id) => progress.modules[id]?.completedAt).filter(Boolean) as string[];
-    return dates.sort().at(-1) ?? null;
-  };
+  const recommended = [
+    ...topics
+      .filter((t) => !progress.topicChecks[t.id])
+      .map((t) => ({ href: `/athlete-health#${t.id}`, title: `${t.letter}. ${t.title}`, text: "Athlete Health knowledge check" })),
+    ...labs
+      .filter((l) => !progress.labsVisited[l.id])
+      .map((l) => ({ href: `/heart-lab#${l.id}`, title: l.name, text: "Heart Lab simulation" })),
+    ...quizList
+      .filter((q) => !progress.quizzes[q.id])
+      .map((q) => ({ href: q.href, title: q.title, text: q.description })),
+  ].slice(0, 3);
 
   return (
     <div className="space-y-10">
-      {/* summary */}
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-3">
         {[
-          { icon: BookOpen, label: "Modules completed", value: `${completed.length} / ${modules.length}` },
-          { icon: Award, label: "Badges earned", value: `${earned.length} / ${badges.length}` },
-          { icon: ListChecks, label: "Topic checks passed", value: `${checks} / ${topics.length}` },
-          { icon: FlaskConical, label: "Labs explored", value: `${labs.length} / 5` },
+          { icon: ListChecks, label: "Topic checks passed", value: `${checksDone.length} / ${topics.length}` },
+          { icon: FlaskConical, label: "Labs explored", value: `${labsDone.length} / ${labs.length}` },
+          { icon: Trophy, label: "Quizzes taken", value: `${quizzesTaken.length} / ${quizList.length}` },
         ].map(({ icon: Icon, label, value }) => (
           <Card key={label}>
             <Icon aria-hidden className="size-6 text-cyan-ink" />
@@ -59,62 +69,72 @@ export function Dashboard() {
         ))}
       </div>
 
-      {/* overall progress */}
       <Card>
         <div className="flex items-center justify-between">
           <h2 className="font-display text-2xl font-bold uppercase">Learning progress</h2>
           <span className="font-display text-2xl font-bold">{pct}%</span>
         </div>
-        <div className="mt-3 h-3 overflow-hidden rounded-full bg-bg-sunken" role="progressbar" aria-label="Overall academy progress" aria-valuemin={0} aria-valuemax={100} aria-valuenow={pct}>
+        <div
+          className="mt-3 h-3 overflow-hidden rounded-full bg-bg-sunken"
+          role="progressbar"
+          aria-label="Overall learning progress"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={pct}
+        >
           <div className="h-full rounded-full bg-gradient-to-r from-cyan to-heart" style={{ width: `${pct}%` }} />
         </div>
-        <div className="mt-6 grid gap-6 md:grid-cols-3">
-          {levels.map((l) => (
-            <div key={l.id}>
-              <p className="font-bold">
-                Level {l.number}: {l.name}
-              </p>
-              <ul className="mt-2 space-y-1 text-sm">
-                {l.modules.map((id) => {
-                  const mp = progress.modules[id];
-                  const done = isModuleComplete(mp);
-                  return (
-                    <li key={id} className="flex items-center justify-between gap-2">
-                      <Link href={`/academy/${id}`} className="truncate hover:underline">
-                        {moduleById[id].title}
-                      </Link>
-                      {done ? (
-                        <Pill tone="green">Done</Pill>
-                      ) : mp?.bestScore != null ? (
-                        <Pill tone="cyan">Quiz {mp.bestScore}/5</Pill>
-                      ) : mp ? (
-                        <Pill tone="cyan">Started</Pill>
-                      ) : (
-                        <Pill>Not started</Pill>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          ))}
+        <div className="mt-6 grid gap-6 md:grid-cols-2">
+          <div>
+            <p className="font-bold">Athlete Health knowledge checks</p>
+            <ul className="mt-2 space-y-1 text-sm">
+              {topics.map((t) => (
+                <li key={t.id}>
+                  <Link href={`/athlete-health#${t.id}`} className="inline-flex min-h-6 items-center gap-2 hover:underline">
+                    {progress.topicChecks[t.id] ? (
+                      <CheckCircle2 aria-label="Passed" className="size-4 text-emerald-600" />
+                    ) : (
+                      <Circle aria-label="Not yet" className="size-4 text-fg-muted" />
+                    )}
+                    {t.letter}. {t.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="font-bold">Heart Lab simulations</p>
+            <ul className="mt-2 space-y-1 text-sm">
+              {labs.map((l) => (
+                <li key={l.id}>
+                  <Link href={`/heart-lab#${l.id}`} className="inline-flex min-h-6 items-center gap-2 hover:underline">
+                    {progress.labsVisited[l.id] ? (
+                      <CheckCircle2 aria-label="Explored" className="size-4 text-emerald-600" />
+                    ) : (
+                      <Circle aria-label="Not yet" className="size-4 text-fg-muted" />
+                    )}
+                    {l.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </Card>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        {/* recommended */}
         <Card>
           <h2 className="font-display text-2xl font-bold uppercase">Recommended next</h2>
           {recommended.length === 0 ? (
-            <p className="mt-3 text-fg-muted">You&apos;ve completed every module. Try the Knowledge Challenge or revisit the labs!</p>
+            <p className="mt-3 text-fg-muted">You&apos;ve done it all. Try beating your best quiz scores!</p>
           ) : (
             <ul className="mt-4 space-y-3">
-              {recommended.map((m) => (
-                <li key={m.id}>
-                  <Link href={`/academy/${m.id}`} className="group flex items-center gap-3 rounded-xl border border-line p-3 hover:border-cyan">
+              {recommended.map((r) => (
+                <li key={r.href}>
+                  <Link href={r.href} className="group flex items-center gap-3 rounded-xl border border-line p-3 hover:border-cyan">
                     <div className="flex-1">
-                      <p className="font-bold">{m.title}</p>
-                      <p className="text-sm text-fg-muted">{m.summary}</p>
+                      <p className="font-bold">{r.title}</p>
+                      <p className="text-sm text-fg-muted">{r.text}</p>
                     </div>
                     <ArrowRight aria-hidden className="size-4 text-red-ink transition group-hover:translate-x-1" />
                   </Link>
@@ -124,69 +144,31 @@ export function Dashboard() {
           )}
         </Card>
 
-        {/* quiz results */}
         <Card>
           <h2 className="font-display text-2xl font-bold uppercase">Quiz results</h2>
           <ul className="mt-4 space-y-3">
-            {quizSets.map((q) => {
+            {quizList.map((q) => {
               const r = progress.quizzes[q.id];
               return (
                 <li key={q.id} className="flex items-center justify-between gap-3 rounded-xl bg-bg-sunken p-3">
                   <div>
                     <p className="font-bold">{q.title}</p>
                     <p className="text-sm text-fg-muted">
-                      {r ? `Best ${r.best}/${r.total} · Last ${r.last}/${r.total} · ${r.attempts} attempt${r.attempts === 1 ? "" : "s"}` : "Not attempted yet"}
+                      {r
+                        ? `Best ${r.best}/${r.total} · Last ${r.last}/${r.total} · ${r.attempts} attempt${r.attempts === 1 ? "" : "s"}`
+                        : "Not attempted yet"}
                     </p>
                   </div>
-                  <ButtonLink href={`/quiz#${q.id}`} variant="secondary" className="shrink-0">
+                  <ButtonLink href={q.href} variant="secondary" className="shrink-0">
                     {r ? "Retry" : "Start"}
                   </ButtonLink>
                 </li>
               );
             })}
-            {modules
-              .filter((m) => progress.modules[m.id]?.bestScore != null)
-              .map((m) => (
-                <li key={m.id} className="flex items-center justify-between rounded-xl px-3 text-sm">
-                  <span>{m.title} quiz</span>
-                  <span className="font-semibold">Best {progress.modules[m.id]!.bestScore}/5</span>
-                </li>
-              ))}
           </ul>
         </Card>
       </div>
 
-      {/* badges & certificates */}
-      <Card>
-        <h2 className="font-display text-2xl font-bold uppercase">Badges & certificates</h2>
-        <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {badges.map((b) => {
-            const has = earned.some((e) => e.id === b.id);
-            return (
-              <li
-                key={b.id}
-                className={cx("flex flex-col rounded-2xl border p-4", has ? "border-amber-500/60 bg-amber-500/10" : "border-dashed border-line")}
-              >
-                {has ? <Award aria-hidden className="size-8 text-amber-500" /> : <Lock aria-hidden className="size-7 text-fg-muted" />}
-                <p className="mt-2 font-display text-xl font-bold uppercase">{b.name}</p>
-                <p className="flex-1 text-sm text-fg-muted">{b.description}</p>
-                <p className="mt-2 text-xs font-semibold">{has ? "Earned" : "Locked"}</p>
-                {has && (
-                  <div className="mt-3">
-                    <CertificateButton badge={b} earnedOn={completedAtFor(b.id)} />
-                  </div>
-                )}
-              </li>
-            );
-          })}
-        </ul>
-        <p className="mt-4 text-xs text-fg-muted">
-          Certificates are educational achievements only — not CPR certification, medical qualifications, or sports
-          clearance.
-        </p>
-      </Card>
-
-      {/* privacy / reset */}
       <Card className="border-dashed">
         <h2 className="font-display text-2xl font-bold uppercase">Your data</h2>
         <p className="mt-2 text-fg-muted">
@@ -199,7 +181,7 @@ export function Dashboard() {
           </Button>
         ) : (
           <div className="mt-4 flex flex-wrap items-center gap-3" role="alert">
-            <p className="font-semibold">Erase all progress, scores, and badges on this device?</p>
+            <p className="font-semibold">Erase all progress and quiz scores on this device?</p>
             <Button
               onClick={() => {
                 reset();

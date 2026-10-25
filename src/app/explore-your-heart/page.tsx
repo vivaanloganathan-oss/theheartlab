@@ -129,8 +129,8 @@ export default function ExploreYourHeartPage() {
           </div>
           <div className="mt-10 flex flex-wrap gap-3">
             <ButtonLink href="/heart-lab#blood-flow">Try the Blood Flow Explorer</ButtonLink>
-            <ButtonLink href="/academy/heart-anatomy" variant="secondary">
-              Take the Heart Anatomy lesson
+            <ButtonLink href="/quiz" variant="secondary">
+              Test yourself in the quiz
             </ButtonLink>
           </div>
         </Container>

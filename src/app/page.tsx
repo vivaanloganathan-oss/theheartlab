@@ -31,7 +31,13 @@ import { HeartDiagram } from "@/components/heart/heart-diagram";
 import { warningSigns } from "@/content/warning-signs";
 import { facts } from "@/content/labs";
 import { getReference } from "@/content/references";
-import { levels } from "@/content/academy";
+
+const journey = [
+  { href: "/explore-your-heart", icon: HeartPulse, title: "Explore", text: "Learn the chambers, valves, and vessels, and follow blood around the body.", cta: "Explore your heart" },
+  { href: "/athlete-health", icon: BookOpen, title: "Learn", text: "Ten athlete-health topics, each with an interactive tool and a knowledge check.", cta: "Start the topics" },
+  { href: "/heart-lab", icon: FlaskConical, title: "Experiment", text: "Five hands-on simulations that make heart science visible.", cta: "Enter the lab" },
+  { href: "/quiz", icon: GraduationCap, title: "Prove it", text: "Take the Knowledge Challenge and the What Would You Do? scenarios.", cta: "Take the quiz" },
+];
 
 const labs = [
   { href: "/heart-lab#heartbeat", icon: HeartPulse, title: "Heartbeat Simulator", text: "Watch illustrative heart rates change from rest to a sprint." },
@@ -214,33 +220,30 @@ export default function Home() {
           <SectionHeading
             id="journey-heading"
             eyebrow="Athlete learning journey"
-            title="Rookie to ambassador"
-            intro="Work through short lessons, try an activity, and pass a five-question quiz to complete each module. Earn badges as you level up. No account needed — progress stays on your device."
+            title="Learn it. Try it. Prove it."
+            intro="Follow the path from heart basics to game-day safety. Knowledge checks and quizzes give instant feedback, and your dashboard tracks your progress. No account needed — it all stays on your device."
           />
-          <ol className="mt-10 grid gap-6 lg:grid-cols-4">
-            {levels.map((l) => (
-              <li key={l.id}>
-                <Card className="h-full">
-                  <p className="font-display text-sm font-bold uppercase tracking-[0.2em] text-cyan-ink">Level {l.number}</p>
-                  <h3 className="mt-1 font-display text-3xl font-extrabold uppercase">{l.name}</h3>
-                  <p className="mt-2 text-sm text-fg-muted">{l.audience}</p>
-                  <p className="mt-4 text-sm font-semibold">{l.modules.length} modules · quiz · badge</p>
-                </Card>
+          <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {journey.map((step, i) => (
+              <li key={step.href}>
+                <Link
+                  href={step.href}
+                  className="group flex h-full flex-col rounded-2xl border border-line bg-bg-elev p-6 transition hover:-translate-y-1 hover:border-cyan"
+                >
+                  <span className="font-display text-sm font-bold uppercase tracking-[0.2em] text-cyan-ink">Step {i + 1}</span>
+                  <step.icon aria-hidden className="mt-3 size-8 text-red-ink" />
+                  <span className="mt-3 font-display text-3xl font-extrabold uppercase leading-none">{step.title}</span>
+                  <span className="mt-2 flex-1 text-sm text-fg-muted">{step.text}</span>
+                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-red-ink">
+                    {step.cta} <ArrowRight aria-hidden className="size-4 transition group-hover:translate-x-1" />
+                  </span>
+                </Link>
               </li>
             ))}
-            <li>
-              <Card className="flex h-full flex-col bg-navy text-white">
-                <Award aria-hidden className="size-8 text-heart" />
-                <h3 className="mt-3 font-display text-3xl font-extrabold uppercase">Graduate</h3>
-                <p className="mt-2 flex-1 text-sm text-white/75">
-                  Complete all 12 modules to become a Heart Lab Graduate and download your certificate.
-                </p>
-                <ButtonLink href="/academy" variant="cyan" className="mt-4 self-start">
-                  Start learning <GraduationCap aria-hidden className="size-4" />
-                </ButtonLink>
-              </Card>
-            </li>
           </ol>
+          <ButtonLink href="/dashboard" variant="secondary" className="mt-8">
+            View my progress <Award aria-hidden className="size-4" />
+          </ButtonLink>
         </Container>
       </Section>
 

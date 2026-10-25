@@ -8,15 +8,6 @@ import { useCallback, useSyncExternalStore } from "react";
  */
 
 const STORAGE_KEY = "heartlab:progress:v1";
-export const PASSING_SCORE = 4; // out of 5 module quiz questions
-
-export interface ModuleProgress {
-  lessonDone: boolean;
-  activityDone: boolean;
-  bestScore: number | null;
-  lastScore: number | null;
-  completedAt: string | null;
-}
 
 export interface QuizResult {
   best: number;
@@ -28,7 +19,6 @@ export interface QuizResult {
 
 export interface Progress {
   version: 1;
-  modules: Record<string, ModuleProgress>;
   quizzes: Record<string, QuizResult>;
   topicChecks: Record<string, boolean>;
   labsVisited: Record<string, boolean>;
@@ -36,18 +26,9 @@ export interface Progress {
 
 const EMPTY: Progress = {
   version: 1,
-  modules: {},
   quizzes: {},
   topicChecks: {},
   labsVisited: {},
-};
-
-const EMPTY_MODULE: ModuleProgress = {
-  lessonDone: false,
-  activityDone: false,
-  bestScore: null,
-  lastScore: null,
-  completedAt: null,
 };
 
 const listeners = new Set<() => void>();
@@ -97,34 +78,8 @@ function update(fn: (p: Progress) => Progress) {
   write(fn(read()));
 }
 
-export function isModuleComplete(m: ModuleProgress | undefined): boolean {
-  return !!m && m.lessonDone && m.activityDone && (m.bestScore ?? 0) >= PASSING_SCORE;
-}
-
 export function useProgress() {
   const progress = useSyncExternalStore(subscribe, read, () => EMPTY);
-
-  const updateModule = useCallback((id: string, patch: Partial<ModuleProgress>) => {
-    update((p) => {
-      const prev = p.modules[id] ?? EMPTY_MODULE;
-      const merged = { ...prev, ...patch };
-      if (!merged.completedAt && isModuleComplete(merged)) {
-        merged.completedAt = new Date().toISOString();
-      }
-      return { ...p, modules: { ...p.modules, [id]: merged } };
-    });
-  }, []);
-
-  const recordModuleQuiz = useCallback(
-    (id: string, score: number) => {
-      const prev = read().modules[id] ?? EMPTY_MODULE;
-      updateModule(id, {
-        lastScore: score,
-        bestScore: Math.max(score, prev.bestScore ?? 0),
-      });
-    },
-    [updateModule],
-  );
 
   const recordQuiz = useCallback((id: string, score: number, total: number) => {
     update((p) => {
@@ -157,7 +112,7 @@ export function useProgress() {
 
   const reset = useCallback(() => write(EMPTY), []);
 
-  return { progress, updateModule, recordModuleQuiz, recordQuiz, markTopicCheck, markLabVisited, reset };
+  return { progress, recordQuiz, markTopicCheck, markLabVisited, reset };
 }
 
 /** True once the component is running in the browser (avoids SSR/client mismatches). */

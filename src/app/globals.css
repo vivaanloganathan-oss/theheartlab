@@ -127,7 +127,7 @@ body {
   }
 }
 
-/* Print: only show elements marked printable (checklists, certificates). */
+/* Print: only show elements marked printable (checklists). */
 @media print {
   body * {
     visibility: hidden;

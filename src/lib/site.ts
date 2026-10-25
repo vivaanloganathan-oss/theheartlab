@@ -15,8 +15,8 @@ export const mainNav = [
   { href: "/explore-your-heart", label: "Explore Your Heart" },
   { href: "/athlete-health", label: "Athlete Health" },
   { href: "/warning-signs", label: "Warning Signs" },
+  { href: "/congenital-heart-conditions", label: "Congenital Hearts" },
   { href: "/heart-lab", label: "Heart Lab" },
-  { href: "/academy", label: "Learning Academy" },
   { href: "/resources", label: "Resources" },
   { href: "/about", label: "About" },
 ] as const;
