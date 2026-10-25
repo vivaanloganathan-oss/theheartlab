@@ -16,6 +16,7 @@ const routes = [
   "/resources",
   "/stories",
   "/about",
+  "/contact",
   "/references",
   "/privacy",
   "/accessibility",

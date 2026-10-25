@@ -31,7 +31,8 @@ const sections = [
   {
     title: "Hosting and external links",
     body: [
-      "Like any website, the server that hosts The Heart Lab may keep standard technical logs (such as IP address and pages requested) for security and reliability. The site operator should describe its hosting provider's practices here before public launch.",
+      "The website is hosted by Vercel. Like any web host, Vercel may keep standard technical logs (such as IP address and pages requested) for security and reliability, as described in Vercel's privacy policy.",
+      "The iPhone and Android apps contain the whole site and run entirely on your device. They don't send your progress or any personal information anywhere.",
       "References link to external websites (for example, government and medical organizations). Those sites have their own privacy policies.",
     ],
   },
@@ -44,7 +45,7 @@ const sections = [
   {
     title: "Contact",
     body: [
-      "Before public launch, the site operator should add a contact method here for privacy questions.",
+      `Questions about privacy? Email ${site.contactEmail} or visit the Contact & Support page (/contact).`,
     ],
   },
 ];

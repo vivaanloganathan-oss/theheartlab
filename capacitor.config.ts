@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
-  // Must be unique in the App Store / Google Play. Change before publishing if you own a domain.
-  appId: "com.theheartlab.app",
+  // Reverse of the youngheartz.com domain; must stay unique in the App Store and Google Play.
+  appId: "com.youngheartz.app",
   appName: "The Heart Lab",
   webDir: "out",
   backgroundColor: "#071426",

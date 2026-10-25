@@ -53,8 +53,11 @@ export default function AccessibilityPage() {
           <section>
             <h2 className="font-display text-3xl font-extrabold uppercase">Feedback</h2>
             <p className="mt-3 text-lg text-fg-muted">
-              If something doesn&apos;t work for you, we want to know. Before public launch, the site operator should add a
-              contact method here for accessibility feedback.
+              If something doesn&apos;t work for you, we want to know. Email{" "}
+              <a href={`mailto:${site.contactEmail}`} className="font-semibold text-fg underline underline-offset-2">
+                {site.contactEmail}
+              </a>{" "}
+              and describe the page and what happened.
             </p>
             <p className="mt-3 text-sm text-fg-muted">Statement last updated {site.contentUpdated}.</p>
           </section>

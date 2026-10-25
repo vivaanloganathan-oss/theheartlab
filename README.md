@@ -36,7 +36,7 @@ The site is fully static, with no server-side data. Any Next.js host works:
 - **Vercel:** import the GitHub repo and deploy with the default settings.
 - **Self-hosted:** `npm run build && npm run start` behind a reverse proxy, or use a Node/Docker host.
 
-Set `NEXT_PUBLIC_SITE_URL` to your production URL (for example `https://theheartlab.org`) so the sitemap, robots.txt, and Open Graph metadata use absolute URLs.
+The production domain is **www.youngheartz.com** (Vercel redirects youngheartz.com there). The site URL defaults to `https://www.youngheartz.com` (in `src/lib/site.ts`) and is used for the sitemap, robots.txt, and Open Graph metadata. Override it with `NEXT_PUBLIC_SITE_URL` for preview deployments if needed.
 
 ## Native apps (iOS and Android with Capacitor)
 
@@ -56,10 +56,12 @@ npm run android     # build, then open the project in Android Studio
 **How it works:**
 
 - `BUILD_TARGET=app` switches Next.js to `output: "export"` with trailing slashes. The website build (`npm run build`) is unchanged.
-- `capacitor.config.ts` sets the app ID (`com.theheartlab.app`; change it before publishing if you own a domain), the name, the splash screen, and edge-to-edge handling. Header and footer padding use `env(safe-area-inset-*)`, so content clears the notch and the home indicator.
+- `capacitor.config.ts` sets the app ID (`com.youngheartz.app`, matching the youngheartz.com domain), the name, the splash screen, and edge-to-edge handling. Header and footer padding use `env(safe-area-inset-*)`, so content clears the notch and the home indicator.
 - Icons and splash screens are generated from `assets/` with `npx capacitor-assets generate` (already done; re-run after changing the images).
 - In the app, checklist **Print/Download** buttons become a native **Share** sheet, which can still print. External source links open in the phone's browser.
 - Capacitor serves the home page for any URL without a file extension. `RouteRecovery` (in the root layout) detects this after an unexpected reload on a subpage and navigates to the right page.
+
+**App Store listing:** `store/ios/app-store-listing.md` has the name, subtitle, description, keywords, privacy answers, age rating guidance, and reviewer notes. `store/ios/screenshots-6.9in/` has six 1320 × 2868 screenshots from the simulator. The iOS app is iPhone-only (`TARGETED_DEVICE_FAMILY = 1`).
 
 **App store notes:** Apple may reject apps that mostly repackage a website (guideline 4.2), and it reviews health content closely (guideline 1.4.1). Finish the clinical review below before submitting. Apple also requires a support URL and privacy details in App Store Connect.
 
