@@ -1,0 +1,148 @@
+@import "tailwindcss";
+
+/* Dark mode follows the data-theme attribute set by the inline theme script. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root,
+[data-theme="light"] {
+  --bg: #f5f8fc;
+  --bg-elev: #ffffff;
+  --bg-sunken: #e9eff7;
+  --fg: #071426;
+  --fg-muted: #46566e;
+  --border: #d6dfeb;
+  /* Accent "ink" colors are darkened so they pass WCAG AA as text on light surfaces. */
+  --red-ink: #c41f2e;
+  --cyan-ink: #0a6f87;
+  --oxy-rich: #e0303f;
+  --oxy-poor: #2f6fd6;
+  --chart-grid: #d6dfeb;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg: #071426;
+  --bg-elev: #10233f;
+  --bg-sunken: #0b1a30;
+  --fg: #ffffff;
+  --fg-muted: #a9b8cf;
+  --border: rgb(255 255 255 / 0.12);
+  --red-ink: #ff6b77;
+  --cyan-ink: #5fdcf3;
+  --oxy-rich: #f04452;
+  --oxy-poor: #5b8cff;
+  --chart-grid: rgb(255 255 255 / 0.12);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-navy: #071426;
+  --color-navy-2: #10233f;
+  --color-heart: #f04452;
+  --color-cyan: #20c7e8;
+  --color-mist: #f5f8fc;
+
+  --color-bg: var(--bg);
+  --color-bg-elev: var(--bg-elev);
+  --color-bg-sunken: var(--bg-sunken);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-line: var(--border);
+  --color-red-ink: var(--red-ink);
+  --color-cyan-ink: var(--cyan-ink);
+  --color-oxy-rich: var(--oxy-rich);
+  --color-oxy-poor: var(--oxy-poor);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-barlow), var(--font-inter), ui-sans-serif, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+:focus-visible {
+  outline: 3px solid #20c7e8;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: rgb(32 199 232 / 0.35);
+}
+
+/* Animated ECG trace used in the hero and section dividers. */
+@keyframes ecg-dash {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.ecg-animate {
+  stroke-dasharray: 1000;
+  animation: ecg-dash 3.2s linear infinite;
+}
+
+@keyframes heart-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.06);
+  }
+  30% {
+    transform: scale(0.99);
+  }
+  45% {
+    transform: scale(1.03);
+  }
+}
+.heart-pulse {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: heart-pulse 1.1s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .ecg-animate {
+    stroke-dasharray: none;
+  }
+}
+
+/* Print: only show elements marked printable (checklists, certificates). */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-area,
+  .print-area * {
+    visibility: visible;
+  }
+  .print-area {
+    position: absolute;
+    inset: 0;
+    color: #000 !important;
+    background: #fff !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
