@@ -157,7 +157,7 @@ export default function CongenitalPage() {
               </Card>
             ))}
           </div>
-          <Callout tone="warning" title="The Heart Lab can't clear anyone to play" className="mt-8">
+          <Callout tone="warning" title="YoungHeartz can't clear anyone to play" className="mt-8">
             Only an athlete&apos;s healthcare team can decide which sports are appropriate. Nothing on this page replaces
             that evaluation.
           </Callout>

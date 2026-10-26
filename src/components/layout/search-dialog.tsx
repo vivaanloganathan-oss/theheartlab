@@ -47,7 +47,7 @@ export function SearchDialog({ open, onClose }: { open: boolean; onClose: () => 
       onClick={(e) => {
         if (e.target === ref.current) onClose();
       }}
-      aria-label="Search The Heart Lab"
+      aria-label="Search YoungHeartz"
       className="mx-auto mt-[10vh] w-[min(42rem,calc(100%-2rem))] rounded-2xl border border-line bg-bg-elev p-0 text-fg shadow-2xl backdrop:bg-navy/70 backdrop:backdrop-blur-sm"
     >
       <div className="flex items-center gap-3 border-b border-line px-4">

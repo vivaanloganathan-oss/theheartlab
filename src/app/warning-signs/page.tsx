@@ -103,7 +103,7 @@ export default function WarningSignsPage() {
           </ol>
           <p className="mt-8 max-w-3xl text-white/75">
             Only a qualified healthcare professional can evaluate symptoms or decide when an athlete may return to
-            sports. The Heart Lab can&apos;t diagnose anyone or clear anyone to play — and a normal heart-rate reading
+            sports. YoungHeartz can&apos;t diagnose anyone or clear anyone to play — and a normal heart-rate reading
             never rules out heart disease.
           </p>
         </Container>

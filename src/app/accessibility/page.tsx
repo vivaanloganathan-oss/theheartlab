@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Accessibility Statement",
-  description: "The Heart Lab's accessibility goals, features, and known limitations.",
+  description: "YoungHeartz's accessibility goals, features, and known limitations.",
 };
 
 const features = [
@@ -30,7 +30,7 @@ export default function AccessibilityPage() {
       <PageHero
         eyebrow="Accessibility"
         title="Accessibility statement"
-        intro="The Heart Lab aims to meet WCAG 2.2 Level AA so every athlete, parent, and coach can learn here."
+        intro="YoungHeartz aims to meet WCAG 2.2 Level AA so every athlete, parent, and coach can learn here."
       />
       <Section>
         <Container className="max-w-3xl space-y-10">

@@ -6,7 +6,7 @@ import type { Reference } from "@/content/types";
 
 export const metadata: Metadata = {
   title: "References & Medical Sources",
-  description: "The public health and medical sources behind The Heart Lab's educational content.",
+  description: "The public health and medical sources behind YoungHeartz's educational content.",
 };
 
 export default function ReferencesPage() {
@@ -20,7 +20,7 @@ export default function ReferencesPage() {
       <PageHero
         eyebrow="References"
         title="Medical sources"
-        intro="Every fact and explanation on The Heart Lab is linked to one or more of the public sources below."
+        intro="Every fact and explanation on YoungHeartz is linked to one or more of the public sources below."
       />
       <Section>
         <Container className="max-w-4xl">

@@ -5,14 +5,14 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "The mission, vision, and content standards behind The Heart Lab.",
+  description: "The mission, vision, and content standards behind YoungHeartz.",
 };
 
 export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="About The Heart Lab"
+        eyebrow="About YoungHeartz"
         title={
           <>
             Know your <span className="text-heart">heart</span>
@@ -26,7 +26,7 @@ export default function AboutPage() {
           <div>
             <SectionHeading eyebrow="Mission" title="Heart-smart athletes" />
             <p className="mt-4 text-lg text-fg-muted">
-              The Heart Lab empowers student-athletes with accessible, evidence-based cardiovascular health education so
+              YoungHeartz empowers student-athletes with accessible, evidence-based cardiovascular health education so
               they can better understand their hearts, recognize potential warning signs, build healthy habits, and know
               when to seek medical help.
             </p>

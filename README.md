@@ -1,10 +1,10 @@
-# The Heart Lab
+# YoungHeartz
 
 **Train Smart. Play Strong. Know Your Heart.**
 
 An interactive cardiovascular health education website for student-athletes, parents, and coaches. Built with Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, Motion, Recharts, and Lucide icons.
 
-> The Heart Lab provides educational information and does not replace professional medical advice, diagnosis, treatment, or sports participation clearance. **All medical content is pending qualified clinical review and must be reviewed before public launch.**
+> YoungHeartz provides educational information and does not replace professional medical advice, diagnosis, treatment, or sports participation clearance. **All medical content is pending qualified clinical review and must be reviewed before public launch.**
 
 ---
 

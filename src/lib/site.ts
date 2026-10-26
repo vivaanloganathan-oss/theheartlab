@@ -1,11 +1,11 @@
 export const site = {
-  name: "The Heart Lab",
+  name: "YoungHeartz",
   tagline: "Train Smart. Play Strong. Know Your Heart.",
   description:
     "Interactive, evidence-based cardiovascular health education for student-athletes, parents, and coaches.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.youngheartz.com",
   disclaimer:
-    "The Heart Lab provides educational information and does not replace professional medical advice, diagnosis, treatment, or sports participation clearance.",
+    "YoungHeartz provides educational information and does not replace professional medical advice, diagnosis, treatment, or sports participation clearance.",
   /** Public contact address for feedback, corrections, privacy, and accessibility. */
   contactEmail: "vivaan.loganathan@gmail.com",
   /** ISO date the bundled content was last edited. */

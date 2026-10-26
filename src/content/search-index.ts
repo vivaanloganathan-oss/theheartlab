@@ -33,7 +33,7 @@ const pages: SearchEntry[] = [
   { title: "References", summary: "Medical sources behind our content.", href: "/references", section: "Page", keywords: "sources citations" },
   { title: "About", summary: "Our mission and how content is reviewed.", href: "/about", section: "Page" },
   { title: "Contact & Support", summary: "Email us with questions, feedback, corrections, or privacy and accessibility requests.", href: "/contact", section: "Page", keywords: "email help support feedback" },
-  { title: "Privacy", summary: "How The Heart Lab handles data.", href: "/privacy", section: "Page" },
+  { title: "Privacy", summary: "How YoungHeartz handles data.", href: "/privacy", section: "Page" },
   { title: "Accessibility", summary: "Our accessibility statement.", href: "/accessibility", section: "Page" },
 ];
 

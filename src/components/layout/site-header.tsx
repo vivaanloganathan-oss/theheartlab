@@ -56,7 +56,7 @@ export function SiteHeader() {
       </div>
       <div className="border-b border-white/10 bg-navy/95 text-white backdrop-blur">
         <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 sm:px-6 lg:px-8">
-          <Link href="/" className="shrink-0" aria-label="The Heart Lab — home">
+          <Link href="/" className="shrink-0" aria-label="YoungHeartz — home">
             <Logo />
           </Link>
 
@@ -84,7 +84,7 @@ export function SiteHeader() {
               type="button"
               onClick={() => setSearchOpen(true)}
               className="inline-flex size-10 items-center justify-center rounded-full border border-white/15 hover:border-cyan"
-              aria-label="Search The Heart Lab"
+              aria-label="Search YoungHeartz"
               aria-keyshortcuts="Control+K Meta+K"
             >
               <Search aria-hidden className="size-4" />

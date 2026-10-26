@@ -3,7 +3,7 @@ import type { CapacitorConfig } from "@capacitor/cli";
 const config: CapacitorConfig = {
   // Reverse of the youngheartz.com domain; must stay unique in the App Store and Google Play.
   appId: "com.youngheartz.app",
-  appName: "The Heart Lab",
+  appName: "YoungHeartz",
   webDir: "out",
   backgroundColor: "#071426",
   plugins: {

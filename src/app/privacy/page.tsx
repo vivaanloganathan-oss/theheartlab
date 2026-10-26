@@ -4,14 +4,14 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: "How The Heart Lab handles information. No accounts, no ads, no trackers.",
+  description: "How YoungHeartz handles information. No accounts, no ads, no trackers.",
 };
 
 const sections = [
   {
     title: "The short version",
     body: [
-      "The Heart Lab does not require an account, does not show ads, and does not include third-party trackers or analytics by default.",
+      "YoungHeartz does not require an account, does not show ads, and does not include third-party trackers or analytics by default.",
       "Your learning progress (knowledge checks passed, labs explored, quiz scores, and theme preference) is stored only in your own browser using local storage. It is never sent to us or anyone else.",
     ],
   },
@@ -39,7 +39,7 @@ const sections = [
   {
     title: "Children and students",
     body: [
-      "The Heart Lab is designed for students, including those under 13, and is built to avoid collecting personal information. Before adding any feature that collects information — such as accounts, teacher dashboards, or analytics — the operator must assess applicable children's privacy and student-data laws (for example, COPPA and FERPA in the United States, and relevant state laws) and update this policy.",
+      "YoungHeartz is designed for students, including those under 13, and is built to avoid collecting personal information. Before adding any feature that collects information — such as accounts, teacher dashboards, or analytics — the operator must assess applicable children's privacy and student-data laws (for example, COPPA and FERPA in the United States, and relevant state laws) and update this policy.",
     ],
   },
   {

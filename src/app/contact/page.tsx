@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact & Support",
-  description: "How to reach The Heart Lab team with questions, feedback, content corrections, and privacy or accessibility requests.",
+  description: "How to reach YoungHeartz team with questions, feedback, content corrections, and privacy or accessibility requests.",
 };
 
 const topics = [
@@ -50,7 +50,7 @@ export default function ContactPage() {
               </div>
             </div>
             <a
-              href={`mailto:${site.contactEmail}?subject=${encodeURIComponent("The Heart Lab — feedback")}`}
+              href={`mailto:${site.contactEmail}?subject=${encodeURIComponent("YoungHeartz — feedback")}`}
               className="inline-flex items-center gap-2 rounded-full bg-heart px-5 py-3 text-sm font-bold text-navy hover:bg-[#ff5b68]"
             >
               <Mail aria-hidden className="size-4" /> Send an email

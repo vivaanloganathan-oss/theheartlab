@@ -53,7 +53,7 @@ export default function ResourcesPage() {
         <Container>
           <div className="flex flex-wrap items-end justify-between gap-4">
             <SectionHeading id="parents-heading" eyebrow="Parents & guardians" title="Supporting your athlete" />
-            <GuideDownload title="The Heart Lab — Parent & Guardian Guide" sections={parentGuide} filename="heart-lab-parent-guide.txt" />
+            <GuideDownload title="YoungHeartz — Parent & Guardian Guide" sections={parentGuide} filename="heart-lab-parent-guide.txt" />
           </div>
           <div className="mt-10">
             <Guide sections={parentGuide} />
@@ -71,7 +71,7 @@ export default function ResourcesPage() {
         <Container>
           <div className="flex flex-wrap items-end justify-between gap-4">
             <SectionHeading id="coaches-heading" eyebrow="Coaches & athletic trainers" title="Leading a heart-safe team" />
-            <GuideDownload title="The Heart Lab — Coach & Athletic Trainer Guide" sections={coachGuide} filename="heart-lab-coach-guide.txt" />
+            <GuideDownload title="YoungHeartz — Coach & Athletic Trainer Guide" sections={coachGuide} filename="heart-lab-coach-guide.txt" />
           </div>
           <div className="mt-10">
             <Guide sections={coachGuide} />

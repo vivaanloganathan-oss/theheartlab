@@ -1,5 +1,5 @@
 /**
- * Shared content model for The Heart Lab.
+ * Shared content model for YoungHeartz.
  *
  * Every piece of educational content carries review metadata so editors can
  * track clinical review. `review.status` stays "pending" until a qualified

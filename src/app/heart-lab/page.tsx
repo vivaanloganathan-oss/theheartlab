@@ -27,7 +27,7 @@ export default function HeartLabPage() {
   return (
     <>
       <PageHero
-        eyebrow="The Heart Lab"
+        eyebrow="Interactive Heart Lab"
         title={
           <>
             Experiment with your <span className="text-cyan">heart science</span>

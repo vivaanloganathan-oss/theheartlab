@@ -16,7 +16,7 @@ export function Logo({ className }: { className?: string }) {
         />
       </svg>
       <span className="font-display text-xl font-extrabold uppercase leading-none tracking-wide">
-        The Heart <span className="text-cyan">Lab</span>
+        Young<span className="text-cyan">Heartz</span>
       </span>
     </span>
   );

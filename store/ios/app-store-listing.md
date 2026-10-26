@@ -1,4 +1,4 @@
-# App Store listing: The Heart Lab
+# App Store listing: YoungHeartz
 
 Copy these into App Store Connect. Character limits were checked when this was written; recheck if you edit.
 
@@ -6,10 +6,10 @@ Copy these into App Store Connect. Character limits were checked when this was w
 
 | Field | Value |
 | --- | --- |
-| Name (≤30) | The Heart Lab |
+| Name (≤30) | YoungHeartz |
 | Subtitle (≤30) | Heart science for athletes |
 | Bundle ID | com.youngheartz.app |
-| SKU | theheartlab-ios-1 |
+| SKU | youngheartz-ios-1 |
 | Primary category | Education |
 | Secondary category | Health & Fitness |
 | Content rights | Does not contain, show, or access third-party content |
@@ -18,7 +18,7 @@ Copy these into App Store Connect. Character limits were checked when this was w
 | Marketing URL (optional) | https://www.youngheartz.com |
 | Copyright | 2026 [name or organization on your Apple Developer account] |
 
-If "The Heart Lab" is already taken on the App Store, try "The Heart Lab: Athlete Hearts" (29 characters).
+If "YoungHeartz" is already taken on the App Store, try "YoungHeartz: Athlete Hearts" (27 characters).
 
 ## Promotional text (≤170)
 
@@ -32,14 +32,14 @@ heart,athlete,cardiac,CPR,AED,sports,student,coach,pulse,cardio,circulation,anat
 
 Every athlete trains their body. Great athletes also understand their heart.
 
-The Heart Lab is an interactive heart-health learning app for middle school, high school, and college athletes, plus the parents and coaches who support them. Explore how your heart works, see what happens to it when you play, and learn the warning signs that should never be ignored.
+YoungHeartz is an interactive heart-health learning app for middle school, high school, and college athletes, plus the parents and coaches who support them. Explore how your heart works, see what happens to it when you play, and learn the warning signs that should never be ignored.
 
 EXPLORE YOUR HEART
 • Tap the chambers, valves, and vessels of an interactive heart diagram
 • Follow blood on its path from body to lungs and back
 • Clear explanations, with a "go deeper" option for the science
 
-THE HEART LAB
+YOUNGHEARTZ
 • Heartbeat Simulator: see how an illustrative heart rate changes from rest to a sprint
 • Blood Flow Explorer: follow oxygen-rich and oxygen-poor blood step by step
 • Exercise & Your Heart: compare the demands of eight sports
@@ -63,7 +63,7 @@ No account. No ads. No tracking. Your quiz scores and progress stay on your devi
 
 Every explanation links to public sources such as the American Heart Association, CDC, NIH, the American Academy of Pediatrics, and the American College of Cardiology.
 
-IMPORTANT: The Heart Lab is for education only. It does not diagnose conditions, measure your heart, or clear anyone to play sports, and it does not replace advice from a healthcare professional. In an emergency, call 911 or your local emergency number.
+IMPORTANT: YoungHeartz is for education only. It does not diagnose conditions, measure your heart, or clear anyone to play sports, and it does not replace advice from a healthcare professional. In an emergency, call 911 or your local emergency number.
 
 ## What's New (version 1.0)
 
@@ -96,7 +96,7 @@ Choose **"Data Not Collected"**. The app has no accounts, analytics, ads, or net
 
 ## Notes for the reviewer (App Review Information → Notes)
 
-The Heart Lab is an educational app that teaches student-athletes, parents, and coaches about heart health, warning signs, and emergency response (calling 911, CPR, and AED awareness).
+YoungHeartz is an educational app that teaches student-athletes, parents, and coaches about heart health, warning signs, and emergency response (calling 911, CPR, and AED awareness).
 
 - It does not diagnose, measure, or monitor any health condition. All heart-rate values and ECG-style traces are clearly labeled simulations for learning.
 - Every medical statement links to a public source (AHA, CDC, NIH/NHLBI, AAP, ACC). A medical disclaimer appears on every screen.
